@@ -12,8 +12,16 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(express.json());
 
 // routes
-
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: {
+      instruction: "Use the endpoint for all methods",
+      route: "https://futurelabs-todo-app.onrender.com/api/v1/tasks"
+    }
+  })
+})
 app.use('/api/v1/tasks', tasks);
+
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
